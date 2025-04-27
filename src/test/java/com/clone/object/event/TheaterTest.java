@@ -10,7 +10,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 /**
  * TicketOffice 클래스의 minusAmount 테스트 필요
  * Bag 클래스의 plusAmount 테스트 필요
- *
  */
 class TheaterTest {
 
@@ -26,8 +25,9 @@ class TheaterTest {
         theater.enter(audience);
 
         // then
-//        assertThat(audience.getBag().hasInvitation()).isEqualTo(false); // 테스트 실패
-        assertThat(audience.getBag().hasTicket()).isEqualTo(true);
+//        assertThat(audience.getBag().hasInvitation()).isEqualTo(false); // 테스트 실패(why? 초대장을 비우는 로직 없음)
+//        assertThat(audience.getBag().hasTicket()).isEqualTo(true); // getBag() 제거됨
+        assertThat(audience.hasTicket()).isEqualTo(true);
     }
 
     @Test
@@ -39,7 +39,8 @@ class TheaterTest {
         theater.enter(audience);
 
         // then
-        assertThat(audience.getBag().hasTicket()).isEqualTo(true);
+//        assertThat(audience.getBag().hasTicket()).isEqualTo(true); // getBag() 제거됨
+        assertThat(audience.hasTicket()).isEqualTo(true);
     }
 
     @BeforeEach
