@@ -20,20 +20,21 @@ public class Audience {
      * 티켓을 구매합니다.
      *
      * @param ticket 구매할 티켓
-     * @return 지불된 금액을 반환합니다.
+     * @return 지불된 금액
      */
     public Long buy(Ticket ticket) {
-        // 1. 초대장이 있는 경우
-        if (bag.hasInvitation()) {
-            bag.setTicket(ticket); // 관람객의 가방에 티켓을 준다.
-            return 0L;
-        } else { // 2. 초대장이 없는 경우
-            bag.minusAmount(ticket.getFee()); // 관람객의 가방에서 현금(티켓요금) 가져간다.
-//            ticketOffice.plusAmount(ticket.getFee()); // 매표소의 티켓판매금액에 현금(티켓요금)을 추가한다.
-            bag.setTicket(ticket); // 관람객의 가방에 티켓을 준다.
-
-            return ticket.getFee();
-        }
+//        // 1. 초대장이 있는 경우
+//        if (bag.hasInvitation()) {
+//            bag.setTicket(ticket); // 관람객의 가방에 티켓을 준다.
+//            return 0L;
+//        } else { // 2. 초대장이 없는 경우
+//            bag.minusAmount(ticket.getFee()); // 관람객의 가방에서 현금(티켓요금) 가져간다.
+////            ticketOffice.plusAmount(ticket.getFee()); // 매표소의 티켓판매금액에 현금(티켓요금)을 추가한다.
+//            bag.setTicket(ticket); // 관람객의 가방에 티켓을 준다.
+//
+//            return ticket.getFee();
+//        }
+        return bag.hold(ticket);
     }
 
     /**

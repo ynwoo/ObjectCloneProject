@@ -40,7 +40,7 @@ public class Bag {
     /**
      * @return 초대장이 있는지 체크합니다.
      */
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return invitation != null;
     }
 
@@ -51,7 +51,7 @@ public class Bag {
         return ticket != null;
     }
 
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
     }
 
@@ -59,4 +59,22 @@ public class Bag {
         this.amount += amount;
     }
 
+    /**
+     * 티켓을 가지고 있습니다(?)
+     * @param ticket 구매한 티켓
+     * @return 지불된 금액
+     */
+    public Long hold(Ticket ticket) {
+        // 1. 초대장이 있는 경우
+        if (hasInvitation()) {
+            setTicket(ticket); // 관람객의 가방에 티켓을 준다.
+            return 0L;
+        } else { // 2. 초대장이 없는 경우
+            minusAmount(ticket.getFee()); // 관람객의 가방에서 현금(티켓요금) 가져간다.
+//            ticketOffice.plusAmount(ticket.getFee()); // 매표소의 티켓판매금액에 현금(티켓요금)을 추가한다.
+            setTicket(ticket); // 관람객의 가방에 티켓을 준다.
+
+            return ticket.getFee();
+        }
+    }
 }
