@@ -39,6 +39,9 @@ public class TicketSeller {
 //        }
 
         // 03 설계 개선하기 - 캡슐화(encapsulation)
-        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
+//        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
+
+        // 03 설계 개선하기(?) - TicketOffice에 Audience 의존성이 추가됨
+        ticketOffice.sellTicketTo(audience);
     }
 }
